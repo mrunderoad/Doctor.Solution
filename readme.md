@@ -13,4 +13,4 @@
   Fix last migration before pushing to GH
 
 
-baihdsbafihbsdilhfbakjdshgfal
+baihdsbafihbsdilhfbakjdshgfalwtf
