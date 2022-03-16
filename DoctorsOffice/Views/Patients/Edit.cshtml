@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using DoctorsOffice.Models
+@model DoctorsOffice.Models.Patient
+
+<div class="jumbotron">
+  <h1>Edit @Html.DisplayFor(model => model.Name)</h1>
+</div>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.PatientId)
+  @Html.Label("Edit Patient Name:")
+  @Html.EditorFor(model => model.Name)
+  <br>
+  @Html.Label("Edit Patient Birthday")
+  @Html.EditorFor(model => model.Birthday)
+  <br>
+  <input type="submit" value="Update" />
+}

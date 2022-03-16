@@ -1,0 +1,45 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Doctor
+
+<div class="jumbotron">
+  <h1>Details for @Html.DisplayFor(model => model.Name)</h1>
+</div>
+
+<hr />
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>This Doctor does not have any Patients</p>
+}
+else
+{
+  <h2>Patients seeing @Html.DisplayFor(model => model.Name):</h2>
+  <ul>
+    @foreach(var join in Model.JoinEntities)
+    {
+      <li>@join.Patient.Name</li>
+    }
+  </ul>
+  //<h2>@Model.JoinEntities1.Specialty</h2>
+}
+@if (@Model.JoinEntities1.Count == 0)
+{
+  <h4>This doctor is useless!</h4>
+}
+else
+{
+  <h4>Doctors specialties: @Html.DisplayFor(model => model.Name):</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities1)
+  {
+    <li>@join.Specialty.SpecialtyName</li>
+  }
+  </ul>
+}
+<hr />
+<p>@Html.ActionLink("Edit Doctor", "Edit", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Delete Doctor", "Delete", new { id = Model.DoctorId })</p>
+<p>@Html.ActionLink("Add Patient", "Create", "Patients")</p>
+<p>@Html.ActionLink("Add Doctor to Specialty", "AddSpecialty", new { id = Model.DoctorId })</p>

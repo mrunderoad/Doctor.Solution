@@ -1,0 +1,43 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DoctorsOffice.Models.Patient
+
+<div class="jumbotron">
+  <h1>Details for @Html.DisplayFor(model => model.Name)</h1>
+</div>
+<h3>Name: @Html.DisplayFor(model => model.Name)</h3>
+<br>
+<h4>Birthday: @Html.DisplayFor(model => model.Birthday.Month)-@Html.DisplayFor(model => model.Birthday.Day)-@Html.DisplayFor(model => model.Birthday.Year)</h4>
+<hr />
+<h2>Doctors @Html.DisplayFor(model => model.Name) is seeing: </h2>
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>@Html.DisplayFor(model => model.Name) is not seeing any doctors at the moment.</p>
+}
+else
+{
+  <ul>
+    @foreach(var join in Model.JoinEntities)
+    {
+      <li>@join.Doctor.Name</li>
+    }
+  </ul>
+}
+<hr />
+<h4>Delete @Html.DisplayFor(model => model.Name) from Doctor: </h4>
+<ul>
+  @foreach (var join in Model.JoinEntities)
+  {
+    @using (Html.BeginForm("DeleteDoctor", "Patients"))
+    {
+      @Html.Hidden("joinId", @join.DoctorPatientId)
+      <input type="submit" value="Remove From @join.Doctor.Name" />
+    }
+  }
+</ul>
+<hr />
+<p>@Html.ActionLink("Edit Patient", "Edit", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Delete Patient", "Delete", new { id = Model.PatientId })</p>
+<p>@Html.ActionLink("Add Patient to Doctor", "AddDoctor", new { id = Model.PatientId })</p>
