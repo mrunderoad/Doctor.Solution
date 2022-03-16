@@ -13,7 +13,7 @@
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.DoctorId)
-  @Html.Label("Choose Doctor:")
+  @Html.Label("Choose Specialty:")
   @Html.DropDownList("SpecialtyId")
   <br>
   <input type="submit" value="Add To Specialty" />

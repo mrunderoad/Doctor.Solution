@@ -40,6 +40,7 @@ namespace DoctorsOffice.Controllers
         _db.SaveChanges();
       }
       return RedirectToAction("Index");
+      // return RedirectToAction("SelectSpecialty");
     }
 
     public ActionResult Details(int id)
@@ -112,5 +113,26 @@ namespace DoctorsOffice.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    // public ActionResult SelectSpecialty(Patient patient)
+    // {
+    //   ViewBag.SpecialtyId = new SelectList(_db.Specialties, "SpecialtyId", "Name");
+    //   return View();
+    // }
+
+    // [HttpPost]
+    // public ActionResult SelectSpecialty(Specialty specialty)
+    // {
+    //   // linq query to find all doctors of that specialty
+    //   // return RedirectToAction("AddDoctor");
+    // }
   }
 }
+
+// Add Patient => Create[GET]
+// Create Patient => Create[POST] => Redirect to Index
+// Details[PatientId] => 
+// Add Doctor to Patient => Redirect to view SelectSpecialty
+// Select Specialty => Post[SelectSpecialty] => AddDoctor(specialties)
+// Select Doctor with that Specialty => Post[AddSpecialist] => Redirect to Index 
+// Add Doctor To patient from list of specialists

@@ -86,6 +86,8 @@ namespace DoctorsOffice.Controllers
     [HttpPost]
     public ActionResult AddSpecialty(Doctor doctor, int SpecialtyId)
     {
+      // write a linq query to find any doctors that have id of doctor.id and
+      // specialityid, and if so do not add it to database
       if (SpecialtyId != 0)
       {
         _db.DoctorSpecialty.Add(new DoctorSpecialty() { SpecialtyId = SpecialtyId, DoctorId = doctor.DoctorId });

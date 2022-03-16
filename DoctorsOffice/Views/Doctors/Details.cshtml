@@ -15,14 +15,13 @@
 }
 else
 {
-  <h2>Patients seeing @Html.DisplayFor(model => model.Name):</h2>
+  <h3>@Html.DisplayFor(model => model.Name) is seeing @Html.DisplayFor(model => model.JoinEntities.Count) Patients.</h3>
   <ul>
     @foreach(var join in Model.JoinEntities)
     {
       <li>@join.Patient.Name</li>
     }
   </ul>
-  //<h2>@Model.JoinEntities1.Specialty</h2>
 }
 @if (@Model.JoinEntities1.Count == 0)
 {
