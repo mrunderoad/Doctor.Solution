@@ -21,7 +21,8 @@ else
   <ul>
     @foreach(var join in Model.JoinEntities)
     {
-      <li>@join.Doctor.Name</li>
+      // @Html.ActionLink(Link Text, View Name, Controller Name, Values passed to view)
+      <li>@Html.ActionLink(@join.Doctor.Name, "Details", "Doctors", new { id = join.Doctor.DoctorId })</li>
     }
   </ul>
 }

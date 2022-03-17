@@ -33,12 +33,13 @@ namespace DoctorsOffice.Controllers
     public ActionResult Create(Patient patient, int DoctorId)
     {
       _db.Patients.Add(patient);
-      _db.SaveChanges();
+
       if (DoctorId != 0)
       {
         _db.DoctorPatient.Add(new DoctorPatient() { DoctorId = DoctorId, PatientId = patient.PatientId });
-        _db.SaveChanges();
       }
+
+      _db.SaveChanges();
       return RedirectToAction("Index");
       // return RedirectToAction("SelectSpecialty");
     }
@@ -105,10 +106,14 @@ namespace DoctorsOffice.Controllers
       return RedirectToAction("Index");
     }
 
+    // FRIDAY PROJECT
+    // Make sure you can remove students, remove courses, and also unenroll
+    // students from courses (aka delete the join relationship between the two)
     [HttpPost]
-    public ActionResult DeleteDoctor(int jointId)
+    public ActionResult DeleteDoctor(int joinId)
     {
-      var joinEntry = _db.DoctorPatient.FirstOrDefault(j => j.DoctorPatientId == jointId);
+      System.Console.WriteLine("joinId => " + joinId);
+      var joinEntry = _db.DoctorPatient.FirstOrDefault(j => j.DoctorPatientId == joinId);
       _db.DoctorPatient.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");

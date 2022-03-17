@@ -13,4 +13,9 @@
   Fix last migration before pushing to GH
 
 
-baihdsbafihbsdilhfbakjdshgfalwtf
+
+
+git clone repo
+cd into directory where csproj file is
+dotnet ef database update -> Add database & tables to running MySQL database server on your computer
+
